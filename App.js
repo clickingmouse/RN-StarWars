@@ -21,41 +21,44 @@ const links = [
 ];
 
 class StarWars extends React.Component {
-static NavigationOptions ={
-  headerTitle: <Image
-  style={{width:110, height:64}}
-  source {{
-    url:"https://raw.githubusercontent.com/dabit"
-  }}
-  />,
-  headerStyle:{backgroundColor:"black", height:110}
+  static NavigationOptions = {
+    headerTitle: (
+      <Image
+        style={{ width: 110, height: 64 }}
+        source={{
+          url:
+            "https://raw.githubusercontent.com/dabit3/react-native-in-action/chapter6/sw.jpg"
+        }}
+      />
+    ),
+    headerStyle: { backgroundColor: "black", height: 110 }
+  };
+  navigate = link => {
+    const { navigate } = this.props.Navigation;
+    navigate(link);
+  };
 
-}
-navigate=(link)=> {
-  const {navigate}=this.props.Navigation
-  navigate(link)
-}
-
-renderItem=({item, index})=> {
-  return(
-    <TouchableHighLight
-    onPress={()=> this.navigate(item.title)}
-    style={[styles.item, {borderTopWidth: index === 0? 1: null}]} >
-    < Text style={styles.text} > {item.title} </Text>
-    </TouchableHighLight>
-  )
-}
-
+  renderItem = ({ item, index }) => {
+    return (
+      <TouchableHighLight
+        onPress={() => this.navigate(item.title)}
+        style={[styles.item, { borderTopWidth: index === 0 ? 1 : null }]}
+      >
+        <Text style={styles.text}> {item.title} </Text>
+      </TouchableHighLight>
+    );
+  };
 
   render() {
     return (
-<Container>
-  <FlatList>
-    data = {links}
-    keyExtractor={(item)=> item.title}
-    renderItem={this.renderItem}
-  </FlatList>
-</Container>    );
+      <Container>
+        <FlatList>
+          data = {links}
+          keyExtractor={item => item.title}
+          renderItem={this.renderItem}
+        </FlatList>
+      </Container>
+    );
   }
 }
 
