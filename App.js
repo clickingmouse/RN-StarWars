@@ -8,7 +8,7 @@ import {
   FlatList,
   TouchableHighLight
 } from "react-native";
-import { StackNavigator } from "react-Navigation";
+import { StackNavigator } from "react-navigation";
 import Container from "./components/Container";
 
 const links = [
